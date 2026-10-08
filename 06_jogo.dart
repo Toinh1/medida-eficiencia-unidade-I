@@ -2,10 +2,9 @@ import 'dart:io';
 import 'dart:math';
 
 void main() {
-  final aleatorio = Random();
-  final numeroSorteado = aleatorio.nextInt(100) + 1;
+  final numeroSorteado = Random().nextInt(100) + 1;
 
-  int limiteInferior = 1;
+  int limiteInferior = 0;
   int limiteSuperior = 100;
 
   print('Tente adivinhar um número entre 1 e 100.');
@@ -19,12 +18,12 @@ void main() {
       break;
     }
 
-    if (palpite < numeroSorteado) {
-      limiteInferior = palpite + 1;
-      print('O número está entre $limiteInferior e $limiteSuperior.');
+    if (palpite > numeroSorteado) {
+      limiteSuperior = palpite;
     } else {
-      limiteSuperior = palpite - 1;
-      print('O número está entre $limiteInferior e $limiteSuperior.');
+      limiteInferior = palpite;
     }
+
+    print('O número está entre $limiteInferior e $limiteSuperior.');
   }
 }
